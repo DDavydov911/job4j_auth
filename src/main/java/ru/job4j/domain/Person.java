@@ -18,4 +18,8 @@ public class Person {
     private int id;
     private String login;
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 }
