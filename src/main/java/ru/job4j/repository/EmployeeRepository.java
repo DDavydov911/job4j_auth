@@ -10,10 +10,11 @@ import java.util.Optional;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
-    @Query("select distinct e from Employee e join fetch e.accounts order by e.id")
+    @Override
+    @Query("select e from Employee e join fetch e.accounts order by e.id")
     List<Employee> findAll();
 
     @EntityGraph(attributePaths = {"accounts"})
-//    @Query("select distinct e from Employee e join fetch e.accounts where e.id = ?1")
+//    @Query("select e from Employee e join fetch e.accounts where e.id = ?1")
     Optional<Employee> findById(int id);
 }
